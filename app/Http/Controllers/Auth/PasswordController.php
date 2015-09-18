@@ -2,31 +2,36 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+use Auth;
+use Input;
+use Redirect;
+use Validator;
+use App\Http\Controllers\SingleFormController;
+use App\User;
 
-class PasswordController extends Controller
+class PasswordController extends SingleFormController
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
-    |
-    */
-
-    use ResetsPasswords;
-
-    /**
-     * Create a new password controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function getUpdatePwd()
     {
-        $this->middleware('guest');
+        return $this->viewMake('auth.update_pwd',
+            ['model'=> Auth::user()]);
+    }
+
+    public function postUpdatePwd()
+    {
+        $validator = Validator::make(Input::all(), [
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        if ($validator->fails()){
+            return redirect()->back()
+                ->withErrors($validator);
+        }
+
+        $user = User::find(Auth::user()->id);
+        $user->password = bcrypt(Input::get('password'));
+        $user->save();
+
+        return Redirect::to(action("HomeController@getIndex"));
     }
 }

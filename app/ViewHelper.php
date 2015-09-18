@@ -243,7 +243,7 @@ function v_html_control($model, $f, $readonly)
     $html = "";
     if ($readonly ==false)
     {
-            $html = $html."<script id='${f}_ueditor' name='$f' type='text/plain' class='pms-html-editor'>";
+            $html = $html."<script id='${f}_ueditor' name='$f' type='text/plain' class='cms-html-editor'>";
             $html = $html.$model->$f;
             $html = $html."</script>";
             $html = $html."<script type='text/javascript'>";

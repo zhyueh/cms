@@ -37,8 +37,7 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人信息</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{action_url('Auth\AuthController@getUpdatePwd')}}">修改密码</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{action_url('Auth\PasswordController@getUpdatePwd')}}">修改密码</a></li>
                     <li class="divider"></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo action('Auth\AuthController@getLogout'); ?>">退出</a></li>
                 </ul>
@@ -51,10 +50,11 @@
         <ul class="nav nav-tabs">
 <?php
 $navs = [
-    '文章'=>'',
-    '公告'=>'',
-    '广告位'=>'',
-    '快捷入口'=>'',
+    '文章'=>'ArticleController@getIndex',
+    '公告'=>'BulletinController@getEdit',
+    '文件上传'=>'',
+    '广告位'=>'AdvertisementController@getIndex',
+    '快捷入口'=>'EntranceController@getIndex',
     '头部标签'=>'HeaderController@getIndex',
 ];
 $ct = get_current_route();
@@ -94,6 +94,13 @@ foreach($navs as $k=>$v)
             </ul>
             @endif
         </div>
+        @if (isset($success) )
+        <div class="alert alert-success">
+            <ul>
+            <li>{{ $success}}</li>
+            </ul>
+        </div>
+        @endif
         <div class="cms-module-helper">
             <div class="cms-module-helper-left">
                 @section('module-helper-left')

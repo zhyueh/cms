@@ -4,6 +4,7 @@ return [
     'website_name'=>"cms",
     'email'=>'邮箱',
     'password'=>'密码',
+    'password_confirm'=>'确认密码',
     'confirm-password'=>'确认密码',
     'remember'=>'记住',
     'login'=>'登录',
@@ -21,5 +22,13 @@ return [
     'display_order'=>'显示顺序',
     'header_type_id'=>'显示类型',
     'target_url'=>'跳转地址',
+
+    #ad
+    'ad_place_id'=>'广告位置',
+    'data'=>'内容',
+
+    #article
+    'read'=>'阅读数',
+    'updated_at'=>'最后更新时间',
 
 ];

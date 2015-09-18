@@ -1,7 +1,7 @@
 @extends('backend_master')
 
 @section('workspace')
-<div class="pms-edit-table">
+<div class="cms-edit-table">
     <form action="{{action_url('postUpdatePwd')}}" method="POST">
         {!! csrf_field()!!}
         <div class="form-group">

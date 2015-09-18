@@ -53,6 +53,11 @@ class SingleFormController extends AdminBaseController
         return Auth::user()->id;
     }
 
+    protected function input($name)
+    {
+        return Input::get($name, null);
+    }
+
     protected function inputId($name)
     {
         $val = Input::get($name, Null);
@@ -87,7 +92,6 @@ class SingleFormController extends AdminBaseController
 
         $template_name = array_get($this->template_dict, $template, $template);
         $template_name = isset($template_name)? $template_name: $template;
-        echo $template_name;
 
         return View::make($template_name, $var);
     }

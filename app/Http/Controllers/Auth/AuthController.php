@@ -66,6 +66,7 @@ class AuthController extends Controller
 
     public function getUpdatePwd()
     {
+        return "123";
         return $this->viewMake('auth.update_pwd',
             ['model'=> Auth::user()]);
     }
