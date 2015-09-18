@@ -32,6 +32,8 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
+    protected $redirectTo = 'index';
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -60,5 +62,34 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function getUpdatePwd()
+    {
+        return $this->viewMake('auth.update_pwd',
+            ['model'=> Auth::user()]);
+    }
+
+    public function postUpdatePwd(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        if ($validator->fails()){
+            return Redirect::To(action('Auth\AuthController@getUpdatePwd'))
+                ->withErrors($validator);
+        }
+
+        $user = User::find(Auth::user()->id);
+        $user->password = bcrypt(Input::get('password'));
+        $user->save();
+
+        return Redirect::to(action("HomeController@getIndex"));
+    }
+
+    public function updatePwdValidate($request)
+    {
+
     }
 }

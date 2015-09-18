@@ -47,6 +47,9 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
+include __DIR__.'/../app/Helper.php';
+include __DIR__.'/../app/ViewHelper.php';
+
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
