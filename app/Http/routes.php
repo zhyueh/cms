@@ -21,5 +21,4 @@ Route::controller('ad', 'AdvertisementController');
 Route::controller('bulletin', 'BulletinController');
 Route::controller('article', 'ArticleController');
 
-Route::get('/', 'HomeController@getIndex');
-Route::get('/home', 'HomeController@getIndex');
+Route::get('/', 'IndexController@getIndex');

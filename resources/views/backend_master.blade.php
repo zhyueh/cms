@@ -27,7 +27,7 @@
 @section('body')
 <div class="cms-header">
     <div class="cms-header-top">
-        <div class="website-name">cms</div>
+        <div class="website-name"><a href="{!! action_url("IndexController@getIndex") !!}">cms</a></div>
         <div class="person">
             <div class="dropdown">
                 <a class="dropdown-toggle cms-user" type="button" id="dropdownMenu1" data-toggle="dropdown">
@@ -52,7 +52,6 @@
 $navs = [
     '文章'=>'ArticleController@getIndex',
     '公告'=>'BulletinController@getEdit',
-    '文件上传'=>'',
     '广告位'=>'AdvertisementController@getIndex',
     '快捷入口'=>'EntranceController@getIndex',
     '头部标签'=>'HeaderController@getIndex',

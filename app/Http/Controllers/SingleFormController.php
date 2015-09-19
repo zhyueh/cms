@@ -143,7 +143,7 @@ class SingleFormController extends AdminBaseController
 
         $input = Input::all();
 
-        $models = $builder->paginate(15);
+        $models = $builder->paginate(10);
 
         return $this->viewMake('form.index', [
             'models' => $models,

@@ -30,5 +30,7 @@ return [
     #article
     'read'=>'阅读数',
     'updated_at'=>'最后更新时间',
+    'priority'=>'优先级',
+    'content'=>'内容',
 
 ];
